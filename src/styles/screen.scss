@@ -6,66 +6,76 @@ html {
   height: 100vh;
 }
 
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  min-height: 100vh;
+}
+
 body {
   margin: 0;
   font: $base-text-size / 1 $base-font-family;
   text-align: center;
 }
 
-.cellContainer {
-  display: flex;
-  justify-content: center;
-  margin: 10px auto;
-  width: 300px;
-  height: 300px;
-}
+table {
+  border: thick solid red;
 
-.cell {
-  border: 1px solid red;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 30px;
-  width: 30px;
-}
+  td {
+    height: 16px;
+    width: 16px;
+    border: 1px solid black;
+    text-align: center;
+    line-height: 16px;
 
-.GameBoard {
-  display: flex;
-  justify-content: center;
+    &.unrevealed {
+      background-color: green;
+    }
 
-  tbody {
-    border-spacing: 1;
-    height: 200px;
-    width: 200px;
-    border: 1px solid red;
-    background-color: red;
+    &.empty,
+    &.numbered {
+      background-color: teal;
+    }
 
-    td {
-      height: 16px;
-      width: 16px;
-      border: 1px solid black;
-      text-align: center;
-      line-height: 16px;
+    &.bomb {
+      background-color: gray;
+    }
 
-      &.unrevealed {
-        background-color: green;
+    &.flagged {
+      background-color: lightgreen;
+    }
+
+    &.flagged-bomb {
+      background-color: aqua;
+    }
+
+    &.numbered-1 {
+      background-color: white;
+
+      &::before {
+        content: '1';
+        background-color: white;
       }
+    }
 
-      &.empty,
-      &.numbered {
-        background-color: teal;
+    &.numbered-2 {
+      background-color: white;
+
+      &::before {
+        content: '2';
+        background-color: white;
       }
+    }
 
-      &.bomb {
-        background-color: gray;
-      }
+    &.numbered-3 {
+      background-color: white;
 
-      &.flagged {
-        background-color: lightgreen;
-      }
-
-      &.flagbomb {
-        background-color: aqua;
+      &::before {
+        content: '3';
+        background-color: white;
       }
     }
   }

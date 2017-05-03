@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
-import Level from './Level'
-import GameBoard from './GameBoard'
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
+import Home from './Home'
+import Game from './Game'
+
 // import { get } from './Api'
 
 class App extends Component {
@@ -12,16 +14,20 @@ class App extends Component {
   }
 
   render () {
-    return <div className='App'>
-      <div className='header'>
-        <h1>Watch out for the Mines</h1>
-        <Level />
-        <GameBoard />
+    return <Router>
+      <div className='App'>
+        <h1><Link to='/'>Watch out for the Mines</Link></h1>
+        <main>
+          <Switch>
+            <Route path='/' exact component={Home} />
+            <Route path='/game/:id' exact component={Game} />
+          </Switch>
+        </main>
+        <footer>
+          <h6>&copy; Built with &hearts; The Iron Yard - St.Pete </h6>
+        </footer>
       </div>
-      <footer>
-        <h6>&copy; Built with &hearts; The Iron Yard - St.Pete </h6>
-      </footer>
-    </div>
+    </Router>
   }
 }
 
