@@ -1,8 +1,13 @@
 import React from 'react'
+import game from '../game'
+import { Redirect } from 'react-router-dom'
+import { observer } from 'mobx-react'
 
 const Home = ({history}) => {
+  if (game.id) return <Redirect to={`/game/${game.id}`} />
+
   const _click = () => {
-    history.push('/game/43')
+    game.create()
   }
 
   return <div className='Home'>
@@ -13,4 +18,4 @@ const Home = ({history}) => {
     </div>
   </div>
 }
-export default Home
+export default observer(Home)
